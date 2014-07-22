@@ -2,16 +2,14 @@ require 'ship'
 
 shared_examples 'ship' do
 
-let(:ship)			{ Ship.new 																			}
-let(:weak_ship) { Ship.new(1) 																	}
-let(:cell)			{ double :cell, :occupy_with => nil 						}
-let(:grid)			{ double :grid, :cell => cell, :add_ship => nil }
+	let(:ship)			{ Ship.new 																			}
+	let(:weak_ship) { Ship.new(1) 																	}
+	let(:cell)			{ double :cell, :occupy_with => nil 						}
+	let(:grid)			{ double :grid, :cell => cell, :add_ship => nil }
 
-before(:each) do
-	allow(STDOUT).to receive(:puts)
-end
-
-context ''
+	before(:each) do
+		allow(STDOUT).to receive(:puts)
+	end
 
 	it 'should not be sunk when created' do 
 		expect(ship).not_to be_sunk

@@ -46,11 +46,16 @@ describe 'cell' do
 	end
 
 	it 'should display ~ if occupied by water' do
-		expect(cell.display).to eq('~')
+		expect(cell.display(false)).to eq('~')
 	end
 
 	it 'should display @ if occupied by a ship' do
-		expect(occupied_cell.display).to eq('@') 
+		expect(occupied_cell.display(false)).to eq('@') 
+	end
+
+	it 'should only display - on cells if option to hide ships is selected' do
+		expect(cell.display(true)).to eq('-')
+		expect(occupied_cell.display(true)).to eq('-')
 	end
 
 end

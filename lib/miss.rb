@@ -2,8 +2,8 @@ require './lib/attacked_cell'
 
 class Miss < AttackedCell
 
-	def display
-	"O"
+	def display(arg = nil)
+		"O"
 	end
 
 end

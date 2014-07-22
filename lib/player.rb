@@ -13,7 +13,12 @@ class Player
 	def deploy_ships(ships)
 		ships.each do |ship| 
 			deploy(ship, request_coordinate_to_place(ship))
+			print_own_grid
 		end
+	end
+
+	def print_own_grid
+		display_grid(false)
 	end
 
 	def deploy(ship, at_coordinates)
@@ -85,7 +90,7 @@ class Player
 	end
 
 	def have_shared_row_or_column?(coordinates)
-		shared_column?(coordinates) or shared_column?(coordinates)
+		shared_row?(coordinates) or shared_column?(coordinates)
 	end
 
 	def shared_column?(coordinates)
@@ -116,10 +121,27 @@ class Player
 
 	#Grid user interface
 
-	def display_grid
-		content = grid.cells.map{|row|row.map{|cell| cell.display}}
-		table = Terminal::Table.new rows: content
+	def display_grid(hide_ships = true)
+		content = create_content(hide_ships)
+		content = index_rows(content)
+		table = create_table(content)
 		puts table
+	end
+
+	def create_content(hide_ships)
+		grid.cells.map{|row| row.map{|cell| cell.display(hide_ships)}}
+	end
+
+	def index_rows(content)
+		indexed_rows = []
+		content.each_with_index do |row, index|
+			indexed_rows << [index+1] + row
+		end
+		indexed_rows
+	end
+
+	def create_table(content)
+		Terminal::Table.new title: "Battle Royale... At Sea", headings: ['/'] + ('a'..'j').to_a, rows: content
 	end
 
 end

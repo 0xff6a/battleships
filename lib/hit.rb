@@ -2,7 +2,7 @@ require './lib/attacked_cell'
 
 class Hit < AttackedCell
 
-def display 
+def display(arg = nil)
 	"X"
 end
 

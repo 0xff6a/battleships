@@ -39,7 +39,8 @@ class Cell
 		Miss.new
 	end
 	
-	def display
+	def display(hide_ships = true)
+		return "-" if hide_ships
 		return '@' if occupied? 
 		'~'
 	end

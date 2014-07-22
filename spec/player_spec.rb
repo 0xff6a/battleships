@@ -1,13 +1,15 @@
 require 'player'
 
-
 	describe Player do 
 
-		let(:player)  	{Player.new																							}	
-		let(:ship)			{ double :ship, :shield_level => 2											}
-		let(:destroyer) {double :destroyer																			}
+	let(:player)  	{Player.new																							}	
+	let(:ship)			{ double :ship, :shield_level => 2											}
+	let(:destroyer) {double :destroyer																			}
 
+	before(:each)		{ allow(STDOUT).to receive(:puts)												}
+	
 	context 'At start of game' do
+
 		it "should have a grid when created" do 
 			expect(player.grid.is_a?(Grid)).to be true
 		end
@@ -28,16 +30,12 @@ require 'player'
 	end
 
 	context 'During the game' do
+
 		it "should be able to shoot at opponent\'s board" do 
-			# i have 2 players
-			# i want player1 to shoot at the opponent's board
-			# my expectation is that the opponents board receives the message
-			# player1.shoot_at(player2.grid, at_coord)
-			hannah           = Player.new
-			catharinas_grid  = Player.new.grid
+			other_grid  = Player.new.grid
 			at_coordinate    = 'A1'
-			expect(catharinas_grid).to receive(:attack_cell).with(at_coordinate)
-			hannah.shoot_at(catharinas_grid, at_coordinate)
+			expect(other_grid).to receive(:attack_cell).with(at_coordinate)
+			player.shoot_at(other_grid, at_coordinate)
 		end
 
 	end
@@ -90,4 +88,4 @@ require 'player'
 
 	end
 
-	end
+end

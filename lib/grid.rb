@@ -15,7 +15,7 @@ class Grid
 	#Context: cells in the grid
 
 	def create_cells
-		Array.new(size) { Array.new(size) { OpponentCell.new } }
+		Array.new(size) { Array.new(size) { Cell.new } }
 	end
 
 	def cell(grid_reference)
