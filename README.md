@@ -1,4 +1,4 @@
-Week 4 @ Makers Academy: Create An Interactive Battleships Game 
+Week 4 @ Makers Academy: Interactive Battleships Game 
 ===============================================================
  
 Team Incas : Catherina, Hannah, Jeremy, Peter
