@@ -1,4 +1,4 @@
-require './lib/grid'
+require_relative 'grid'
 
 class Ship
 

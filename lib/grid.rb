@@ -1,4 +1,4 @@
-require './lib/cell'
+require_relative 'cell'
 
 class Grid
 

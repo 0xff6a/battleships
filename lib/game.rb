@@ -1,5 +1,5 @@
-require './lib/player'
-require './lib/ship'
+require_relative 'player'
+require_relative 'ship'
 
 class Game
 
